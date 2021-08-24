@@ -1,17 +1,15 @@
-import 'babel-polyfill' ;
+// import 'babel-polyfill' ;
 import express from 'express';
 import renderer from "./helper/renderer";
-import createStore from "./helper/createStore";
+import configureAppStore from "./app/store";
 const app = express();
+
+const { store } =  configureAppStore()
 
 app.use(express.static("public"));
 
 app.get("*", (req, res) => {
-    const store = createStore();
-
-    // در این محل یک مشت منطق مدیریت اولیه برای وضعیت اپ نصب خواهد شد
-
-    res.send(renderer(req, store));
+    res.send(renderer(req, res, store));
 });
 
 const port = 4000;

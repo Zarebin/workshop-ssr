@@ -1,14 +1,12 @@
 import React from "react";
 import { renderToString } from "react-dom/server";
 import { StaticRouter } from 'react-router-dom'
-import { Provider } from "react-redux";
 import Routes from "../client/Routes";
-// import Counter from "../client/features/counter/Counter";
+import {Provider} from "react-redux";
 
-export default (req, store) => {
+export default (req, res, store) => {
     const content = renderToString(
         <Provider store={store}>
-          {/*<Counter />*/}
             <StaticRouter location={req.path} context={{}}>
                 <Routes />
             </StaticRouter>

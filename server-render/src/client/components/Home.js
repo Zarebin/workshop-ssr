@@ -1,8 +1,6 @@
 import React from 'react';
 import Logo from '../../static/images/logo.svg';
 import X from '../../assets/zarebin_image.gif';
-import G from '../../assets/zarebin_image.gif'
-import './style.scss'
 
 const Home = () => {
   return (
@@ -10,8 +8,7 @@ const Home = () => {
       <div>Home component</div>
       <button onClick={() => console.log('Hi there')}> Saampllle </button>
       <img src={Logo} />
-      <img src={G} />
-      <img src={X} />
+      <img width={300} src={X} />
     </div>
   );
 };
