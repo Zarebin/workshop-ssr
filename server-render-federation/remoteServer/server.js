@@ -1,17 +1,18 @@
-import express from "express";
+import express from 'express';
 import { renderToString } from "react-dom/server";
-import React from "react";
 import App from "./App";
-
+import React from "react";
 const app = express();
 
-app.use('/static', express.static('remoteServer/public/client'))
 
-app.get("*", (req, res, next) => {
-  const html = renderToString(<App />);
-  res.send(html);
+// app.use(express.static("ui-platform/public"));
+
+app.get("*", (req, res) => {
+    const html = renderToString(<App />)
+    res.send(html);
 });
 
-app.listen(3001, () => {
-  console.log(`Server is listening on port: 3001`);
+const port = 4001;
+app.listen(port, () => {
+    console.log(`listening on ${port}`);
 });

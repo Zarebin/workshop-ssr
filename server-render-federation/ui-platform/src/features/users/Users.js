@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { selectUsers } from './slice';
-// import styles from './users.module.css';
+import styles from './users.module.css';
 import { addAsyncWithSaga } from "./actions";
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 
@@ -17,7 +17,7 @@ export function Users() {
   return (
     <div>
         <button
-          // className={styles.asyncButton}
+          className={styles.asyncButton}
           onClick={() => dispatch(addAsyncWithSaga())}
         >
           Add Users

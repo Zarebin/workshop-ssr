@@ -1,8 +1,6 @@
 const path = require('path');
 const { merge } = require('webpack-merge')
-
-const ModuleFederationPlugin =
-    require("webpack").container.ModuleFederationPlugin;
+const ModuleFederationPlugin = require("webpack").container.ModuleFederationPlugin;
 
 const commonsWebpack = require('./webpack.commons')
 
@@ -13,37 +11,26 @@ const serverConfig = {
   target: 'node',
 
   //    فایل اصلی که وب پک باید بگیره چی هست؟
-  entry: path.resolve(__dirname,'../src/index.js'),
+  entry: path.resolve(__dirname, '../src/index.js'),
 
   // فایل خروجی رو که ساختم کجا بذارم؟
   output: {
-    path: path.resolve(__dirname, '../build'),
     filename: 'bundle.js',
-    publicPath: "/",
+    path: path.resolve(__dirname, '../build'),
   },
-  externals: ["enhanced-resolve"],
-  optimization: {
-    minimize: false,
-  },
-  resolve: {
-    extensions: [".js", ".jsx"],
-  },
-
-
   plugins: [
     new ModuleFederationPlugin({
       name: "website1",
       library: { type: "commonjs-module" },
-      filename: "container.js",
+      filename: 'container.js',
       remotes: {
-        website2: path.resolve(
-          __dirname,
-          "../../remoteServer/public/server/container.js"
+        website2: path.resolve(__dirname,
+            '../../remoteServer/public/server/container.js'
         ),
-      },
-      //shared: ["react", "react-dom"],
-    }),
-  ],
+      }
+    })
+  ]
+
 };
 
 
