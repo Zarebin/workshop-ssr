@@ -5,6 +5,15 @@ import Routes from "../client/Routes";
 import {Provider} from "react-redux";
 
 export default async (req, res, store) => {
+    // const html = renderToString(
+    //     <Provider store={store}>
+    //         <StaticRouter location={req.path} context={{}}>
+    //             <Routes />
+    //         </StaticRouter>
+    //     </Provider>
+    // );
+
+
     const content = renderToString(
         <Provider store={store}>
             <StaticRouter location={req.path} context={{}}>
@@ -17,9 +26,10 @@ export default async (req, res, store) => {
         <head></head>
         <body>
             <div id="root">${content}</div>
-<!--            <script src="bundle.js"></script>-->
+            <script src="bundle.js"></script>
         </body>
     </html>
   `;
+
     res.send(html);
 }
