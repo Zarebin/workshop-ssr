@@ -245,3 +245,9 @@ fabric.properties
 
 /server-render/build/
 /server-render/public/
+/server-render/ui-platform/build/
+/server-render/ui-platform/public/
+/server-render/remoteServer/public/
+/server-render-federation/remoteServer/public/
+/server-render-federation/ui-platform/build/
+/server-render-federation/ui-platform/public/
